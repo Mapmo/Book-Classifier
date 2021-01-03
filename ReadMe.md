@@ -7,4 +7,13 @@ Sources:
 			<li> human_names: http://www.nrscotland.gov.uk/files/statistics/pop-names-07-t4.csv</li>
 		</ul>
 	</li>
-</ul
+</ul>
+
+Current Idea:
+ls \*txt > all
+split -n l/4 all
+for i in $(ls xa\*); do
+	script.sh "$i" &
+done
+
+sort words_per_book | uniq -c | sort -rn | awk '{if ($1 > 5) print $2}' > genre_words

@@ -3,6 +3,7 @@
 from bulstem.stem import BulStemmer
 import glob
 import os
+import sys
 import re
 import string
 import tempfile
@@ -21,6 +22,10 @@ def dict_word(word, words, val):
     else:
         words[word] = val
 
+
+if (len(sys.argv) < 3):
+    print("Please, give barrier that defines a word as book specific, and a barrier that defines a word as genre specific")
+    exit(1)
 
 tmp_file_fd = tempfile.NamedTemporaryFile()
 tmp_file = tmp_file_fd.name
@@ -66,7 +71,7 @@ for category in glob.glob("*"):
         book_fd.close()
 
         for word, count in words.items():
-            if (count > words_counter * 0.00001):
+            if (count > words_counter * sys.argv[1]):  # best so far 0.00001
                 words_per_book.write(word + "\n")
         words.clear()
     words_per_book.close()
@@ -80,7 +85,7 @@ for category in glob.glob("*"):
 
     words_per_category = open("../" + category + ".words", "w")
     for key, val in words.items():
-        if (val > len(glob.glob("*txt")) * 0.1):
+        if (val > len(glob.glob("*txt")) * sys.argv[2]):  # best so far 0.1
             words_per_category.write(key)
 
     words_per_category.close()

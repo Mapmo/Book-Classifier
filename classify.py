@@ -15,9 +15,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 books_fd = open(sys.argv[1])
 books_json = json.loads(books_fd.read())
-for id in books_json.keys():
-    books_json[id]["words"] = ' '.join(books_json[id]["words"])
-
 books = pd.DataFrame.from_dict(books_json).transpose()
 
 

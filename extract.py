@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 from bulstem.stem import BulStemmer
+from collections import Counter
 import glob
+import json
 import os
-import sys
 import re
 import string
-import tempfile
 
 
 def read_file(path):
@@ -23,30 +23,35 @@ def dict_word(word, words, val):
         words[word] = val
 
 
-if (len(sys.argv) < 3):
-    print("Please, give barrier that defines a word as book specific, and a barrier that defines a word as genre specific")
-    exit(1)
-
-tmp_file_fd = tempfile.NamedTemporaryFile()
-tmp_file = tmp_file_fd.name
-
 cities = read_file("/root/Git/Book-Classifier/noise_data/city_names.txt")
 countries = read_file("/root/Git/Book-Classifier/noise_data/country_names.txt")
 stops = read_file("/root/Git/Book-Classifier/noise_data/grammar_words.txt")
 names = read_file("/root/Git/Book-Classifier/noise_data/human_names.txt")
 
 stemmer = BulStemmer.from_file('stem-context-1')
+
+books = dict()
 for category in glob.glob("*"):
     print("Starting", category)
     words_counter = 0
-    words_per_book = open(tmp_file, 'w')
 
     os.chdir(category + "/txt")
     for book in glob.glob("*txt"):
+
+        id, book_name = book.split('-', 1)
+        if id in books.keys():
+            books[id]["genre"].append(category)
+            continue
+
+        books[id] = dict()
+        books[id]["name"] = book_name[:-4]
+        books[id]["genre"] = list()
+        books[id]["genre"].append(category)
+        books[id]["words"] = list()
+
         book_fd = open(book)
         raw_words = dict()
         words = dict()
-
         try:
             for line in book_fd:
                 for word in line.split():
@@ -70,23 +75,15 @@ for category in glob.glob("*"):
         raw_words.clear()
         book_fd.close()
 
-        for word, count in words.items():
-            if (count > words_counter * sys.argv[1]):  # best so far 0.00001
-                words_per_book.write(word + "\n")
+        top_words = Counter(words).most_common(1000)
+
+        for word in top_words:
+            books[id]["words"].append(word[0])
+        books[id]["words"] = ' '.join(books[id]["words"])
+
+        top_words.clear()
         words.clear()
-    words_per_book.close()
 
-    # After processing each book, summarize the category
-    words = dict()
-    words_per_book = open(tmp_file)
-    for word in words_per_book:
-        dict_word(word, words, 1)
-    words_per_book.close()
-
-    words_per_category = open("../" + category + ".words", "w")
-    for key, val in words.items():
-        if (val > len(glob.glob("*txt")) * sys.argv[2]):  # best so far 0.1
-            words_per_category.write(key)
-
-    words_per_category.close()
     os.chdir("../..")
+tmp = open("/tmp/ops.json", 'w')
+tmp.write(json.dumps(books, ensure_ascii=False))

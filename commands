@@ -1,0 +1,5 @@
+# Rename all books for easier parsing
+for i in $(ls); do cd $i/txt > /dev/null; for j in $(ls); do mv "$j" "$(echo $j | sed 's/-b.txt$//' | sed 's/_-_\([0-9]*\)$/.txt+\1/' | awk -F '+' '{print $2"-"$1}')"; done; cd ../.. ; done
+
+# Pretty json transformation that supports UTF-8
+jq '.' /tmp/ops.json > dataset.json

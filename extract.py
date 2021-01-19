@@ -23,10 +23,10 @@ def dict_word(word, words, val):
         words[word] = val
 
 
-cities = read_file("/root/Git/Book-Classifier/noise_data/city_names.txt")
-countries = read_file("/root/Git/Book-Classifier/noise_data/country_names.txt")
-stops = read_file("/root/Git/Book-Classifier/noise_data/grammar_words.txt")
-names = read_file("/root/Git/Book-Classifier/noise_data/human_names.txt")
+cities = read_file("noise_data/city_names.txt")
+countries = read_file("noise_data/country_names.txt")
+stops = read_file("noise_data/grammar_words.txt")
+names = read_file("noise_data/human_names.txt")
 
 stemmer = BulStemmer.from_file('stem-context-1')
 

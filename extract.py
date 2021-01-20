@@ -87,8 +87,6 @@ def main():
             books[id]["words"] = list()
             books[id]["words"] = extract_words(book)
 
-            print(books)
-            exit(0)
         os.chdir("../..")
 
     tmp = open("/tmp/ops.json", 'w')

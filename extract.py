@@ -32,7 +32,7 @@ names = read_file("noise_data/human_names.txt")
 stemmer = BulStemmer.from_file('stem-context-1')
 
 
-def extract_words(book):
+def extract_words(book, N):
     book_fd = open(book)
     raw_words = dict()
     words = dict()
@@ -58,7 +58,6 @@ def extract_words(book):
     raw_words.clear()
     book_fd.close()
 
-    N = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
     top_words = Counter(words).most_common(N)
     words.clear()
 
@@ -87,7 +86,8 @@ def main():
             books[id]["genre"] = list()
             books[id]["genre"].append(category)
             books[id]["words"] = list()
-            books[id]["words"] = extract_words(book)
+            N = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
+            books[id]["words"] = extract_words(book, N)
 
         os.chdir("../..")
 

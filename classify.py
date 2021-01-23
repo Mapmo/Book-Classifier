@@ -13,6 +13,11 @@ from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from extract import extract_words
 
+
+if len(sys.argv) != 3:
+    print("Usage: python3", sys.argv[0], "DATASET BOOK")
+    exit(1)
+
 books_fd = open(sys.argv[1])
 books_json = json.loads(books_fd.read())
 books = pd.DataFrame.from_dict(books_json).transpose()
@@ -39,8 +44,8 @@ y_pred_prob = clf.predict_proba(xval_tfidf)
 y_pred = (y_pred_prob >= threshold).astype(int)
 result = f1_score(yval, y_pred, average="micro")
 print(result)
-
-q = extract_words(sys.argv[2])
+N = len(books_json.popitem()[1]["words"].split())
+q = extract_words(sys.argv[2], N)
 q_vec = tfidf_vectorizer.transform([q])
 
 q_pred_prob = clf.predict_proba(q_vec)

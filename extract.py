@@ -7,6 +7,7 @@ import json
 import os
 import re
 import string
+import sys
 
 
 def read_file(path):
@@ -57,7 +58,8 @@ def extract_words(book):
     raw_words.clear()
     book_fd.close()
 
-    top_words = Counter(words).most_common(1000)
+    N = int(sys.argv[1]) if len(sys.argv) > 1 else 1000
+    top_words = Counter(words).most_common(N)
     words.clear()
 
     tmp = list()

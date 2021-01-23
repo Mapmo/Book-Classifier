@@ -1,3 +1,4 @@
+Guidance: <a href="https://www.linkedin.com/in/boris-velichkov-298b0a66/"> Boris Velichkov, FMI </a> </br>
 Sources:
 <ul>
 	<li> noise_data:
@@ -5,6 +6,19 @@ Sources:
 			<li> <a href="https://datahub.io/core/world-cities#data">city_names</a> </li>
 			<li> <a href="https://bg.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB:%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5_%D0%B2_%D1%81%D0%B2%D0%B5%D1%82%D0%B0">country_names</a> </li>
 			<li> <a href="http://www.nrscotland.gov.uk/files/statistics/pop-names-07-t4.csv">human_names</a></li>
+			<li> <a href="https://github.com/stopwords-iso/stopwords-bg"> stopwords </a> </li> 
+		</ul>
+	</li>
+	<li> Libraries:
+		<ul>
+			<li> <a href="https://pypi.org/project/bulstem/"> bulstem </a> </li>
+			<li> <a href="https://scikit-learn.org/stable/"> sklearn <a> </li>
+		</ul>
+	</li>
+	<li> Articles:
+		<ul>
+			<li> <a href="https://www.analyticsvidhya.com/blog/2019/04/predicting-movie-genres-nlp-multi-label-classification/"> Main ML idea </a> </li>
+			<li> <a href="https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff"> Multi-label classification idea </a> </li>
 		</ul>
 	</li>
 </ul>
@@ -27,5 +41,5 @@ extract.py
 classify.py
 <ul>
 	<li> You must call the script with 2 parameters - *path to the dataset* and *path to the book* </li>
-	<li> The scipt will return an F1 score of the training and a predicted genre of the books <li>
+	<li> The scipt will return an F1 score of the training and a predicted genre of the books </li>
 </ul>

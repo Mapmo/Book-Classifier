@@ -9,11 +9,23 @@ Sources:
 	</li>
 </ul>
 
-Current Idea:
-ls \*txt > all
-split -n l/4 all
-for i in $(ls xa\*); do
-	script.sh "$i" &
-done
+How the project works:
+<ul>
+	<li> extract.py - generates a dataset in JSON format from the most common words in each book </li>
+	<li> classify.py - using a specified dataset, created by extract.py, it classifies the genre(s) of a book after learning on the provided dataset </li>
+</ul>
 
-sort words_per_book | uniq -c | sort -rn | awk '{if ($1 > 5) print $2}' > genre_words
+Usage:<br>
+extract.py
+<ul>
+	<li> You must be located in a directory that contains other directories named after their genres </li>
+	<li> The script will be looking for a txt directory for each genre. This is useful in case you want to have zip files for the books in each genre as well </li>
+	<li> After you start the script, you have to wait depending on how many books you have provided. You can also provide as a parameter how many words you want to extract from each word </li>
+	<li> After the extraction is ready, the generated file will be "/tmp/ops.json" </li>
+</ul>
+
+classify.py
+<ul>
+	<li> You must call the script with 2 parameters - *path to the dataset* and *path to the book* </li>
+	<li> The scipt will return an F1 score of the training and a predicted genre of the books <li>
+</ul>

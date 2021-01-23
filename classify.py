@@ -17,9 +17,6 @@ books_fd = open(sys.argv[1])
 books_json = json.loads(books_fd.read())
 books = pd.DataFrame.from_dict(books_json).transpose()
 
-print(sys.argv[1])
-max_res = 0
-max_i = -1
 multilabel_binarizer = MultiLabelBinarizer()
 multilabel_binarizer.fit(books['genre'])
 y = multilabel_binarizer.transform(books['genre'])
@@ -35,19 +32,17 @@ lr = LogisticRegression()
 clf = OneVsRestClassifier(lr)
 clf.fit(xtrain_tfidf, ytrain)
 
-t = 0.15  # threshold value
+threshold = 0.1225  # threshold value
 
 # predict probabilities
 y_pred_prob = clf.predict_proba(xval_tfidf)
-y_pred = clf.predict(xval_tfidf)
-y_pred_new = (y_pred_prob >= t).astype(int)
-result = f1_score(yval, y_pred_new, average="micro")
+y_pred = (y_pred_prob >= threshold).astype(int)
+result = f1_score(yval, y_pred, average="micro")
 print(result)
 
 q = extract_words(sys.argv[2])
 q_vec = tfidf_vectorizer.transform([q])
 
 q_pred_prob = clf.predict_proba(q_vec)
-q_pred = clf.predict(q_vec)
-q_pred_new = (q_pred_prob >= t).astype(int)
+q_pred_new = (q_pred_prob >= threshold).astype(int)
 print(multilabel_binarizer.inverse_transform(q_pred_new))

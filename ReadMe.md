@@ -43,3 +43,61 @@ classify.py
 	<li> You must call the script with 2 parameters - *path to the dataset* and *path to the book* </li>
 	<li> The scipt will return an F1 score of the training and a predicted genre of the books </li>
 </ul>
+
+Tests explained:
+<ul>
+	<li> Test 0
+		The idea was to pick the top 3 datasets that I had based on an F1 score. Since a single test on a single dataset was ~10 hours, I had to do it only on some of the datasets </li>
+	<li> Test 1
+		<ul>
+			<li> features: 2,000 - 20,000 </li>
+			<li> data_split: 0.1 - 0.45 </li>
+			<li> threshold: 0.1 - 0.45 </li>
+			<li> №tests: 20 </li>
+		</ul>
+		Results showed that the best solution has to be in this range:
+		<ul> 
+			<li> features: 5,000 - 14000 </li>
+			<li> data_split: 0.1 - 0.25 </li>
+			<li> threshold: 0.25 - 0.3 </li>
+		</ul>
+	</li>
+	<li> Test 2
+        <ul>
+            <li> features: 5,000 - 14,000 </li>
+            <li> data_split: 0.1 - 0.25 </li>
+            <li> threshold: 0.25 - 0.3 </li>
+            <li> №tests: 25 </li>
+        </ul>
+        Results showed that the best solution has to be in this range:
+        <ul>
+            <li> features: 5,000 - 10000 </li>
+            <li> data_split: 0.1 - 0.15 </li>
+            <li> threshold: 0.25 - 0.3 </li>
+        </ul>
+    </li>
+    <li> Test 3
+        <ul>
+            <li> features: 5,000 - 10,000 </li>
+            <li> data_split: 0.1 - 0.15 </li>
+            <li> threshold: 0.25 - 0.3 </li>
+            <li> №tests: 35 </li>
+        </ul>
+        Results showed that the best solution has to be in this range:
+        <ul>
+            <li> features: 7,000 </li>
+            <li> data_split: 0.1 </li>
+            <li> threshold: 0.26 </li>
+        </ul>
+    </li>
+    <li> Test 4
+        <ul>
+            <li> features: 7,000 </li>
+            <li> data_split: 0.1 </li>
+            <li> threshold: 0.26 </li>
+            <li> № tests: 50 </li>
+		</ul>
+		Results showed that the best possible solution in terms of F1 score is for the 1125 words dataset and it is 0.8759894459102902 </br>
+		Note that it is overfitting and this is not the most optimal solution of the task.
+	</li>
+</ul>

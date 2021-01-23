@@ -53,7 +53,7 @@ Tests explained:
 			<li> features: 2,000 - 20,000 </li>
 			<li> data_split: 0.1 - 0.45 </li>
 			<li> threshold: 0.1 - 0.45 </li>
-			<li> №tests: 20 </li>
+			<li> № tests: 20 </li>
 		</ul>
 		Results showed that the best solution has to be in this range:
 		<ul> 
@@ -67,7 +67,7 @@ Tests explained:
             <li> features: 5,000 - 14,000 </li>
             <li> data_split: 0.1 - 0.25 </li>
             <li> threshold: 0.25 - 0.3 </li>
-            <li> №tests: 25 </li>
+            <li> № tests: 25 </li>
         </ul>
         Results showed that the best solution has to be in this range:
         <ul>
@@ -81,7 +81,7 @@ Tests explained:
             <li> features: 5,000 - 10,000 </li>
             <li> data_split: 0.1 - 0.15 </li>
             <li> threshold: 0.25 - 0.3 </li>
-            <li> №tests: 35 </li>
+            <li> № tests: 35 </li>
         </ul>
         Results showed that the best solution has to be in this range:
         <ul>
@@ -99,5 +99,36 @@ Tests explained:
 		</ul>
 		Results showed that the best possible solution in terms of F1 score is for the 1125 words dataset and it is 0.8759894459102902 </br>
 		Note that it is overfitting and this is not the most optimal solution of the task.
+	</li>
+	<li> 
+		Tests with books that were not part of the training process
+		<ul>
+			<li> Test Hannibal
+				<ul>
+					<li> Tests with 0.15 thresholds were accurate and tests with more than 1000 top words and threshold 0.125 were accurate as well</li>
+				</ul>
+			</li>
+			<li> Test Twilight
+				<ul>
+					<li> Tests with threshold over 0.1 were accurate</li>
+				</ul>
+			</li>
+			<li> Test Game of Thrones
+				<ul>
+					<li> Tests with threshold 0.1 and above were accurate</li>
+				</ul>
+			</li>
+			<li> Test Naked Sun
+				<ul>
+					<li> Tests with 0.1 threshold and above and	over 950 words were accurate</li>
+				</ul>
+			</li>
+			<li> Test Azazel
+				<ul>
+					<li> Tests with 0.125 threshold and top words between 1000 and 1250 were accurate</li>
+				</ul>
+			</li>
+		</ul>
+		As a result from the tests, especially that from Azazel, datasets with top 1125 an 1250 top words seem the most accurate. and since the F1 score of 1250 is a bit higher, this is the dataset that I consider a winner
 	</li>
 </ul>

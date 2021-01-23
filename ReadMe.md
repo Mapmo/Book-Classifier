@@ -4,7 +4,7 @@ Sources:
 		<ul>
 			<li> <a href="https://datahub.io/core/world-cities#data">city_names</a> </li>
 			<li> <a href="https://bg.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB:%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%82%D0%B5_%D0%B2_%D1%81%D0%B2%D0%B5%D1%82%D0%B0">country_names</a> </li>
-			<li> <a href="http://www.nrscotland.gov.uk/files/statistics/pop-names-07-t4.csv">https://datahub.io/core/world-cities#datai>human_names</a></li>
+			<li> <a href="http://www.nrscotland.gov.uk/files/statistics/pop-names-07-t4.csv">human_names</a></li>
 		</ul>
 	</li>
 </ul>

@@ -91,8 +91,8 @@ def main():
 
         os.chdir("../..")
 
-    tmp = open("/tmp/ops.json", 'w')
-    tmp.write(json.dumps(books, ensure_ascii=False))
+    with open("/tmp/ops.json", 'w') as tmp:
+        json.dump(books, tmp, ensure_ascii=False)
 
 
 if __name__ == "__main__":

@@ -18,8 +18,8 @@ if len(sys.argv) != 3:
     print("Usage: python3", sys.argv[0], "DATASET BOOK")
     exit(1)
 
-books_fd = open(sys.argv[1])
-books_json = json.loads(books_fd.read())
+with open(sys.argv[1]) as books_fd:
+    books_json = json.load(books_fd)
 books = pd.DataFrame.from_dict(books_json).transpose()
 
 multilabel_binarizer = MultiLabelBinarizer()

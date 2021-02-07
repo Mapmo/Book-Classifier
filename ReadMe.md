@@ -82,8 +82,6 @@ Starting Social
 
 ```bash
 $ ./classify.py /tmp/ops.json Omir_-_Iliada_-_6122-b.txt
-/usr/local/lib/python3.6/site-packages/pandas/compat/__init__.py:120: UserWarning: Could not import the lzma module. Your installed Python is incomplete. Attempting to use lzma compression will result in a RuntimeError.
-  warnings.warn(msg)
 0.6937984496124031
 [('Ancient',)]
 

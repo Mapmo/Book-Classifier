@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
-from bulstem.stem import BulStemmer
-from collections import Counter
 import glob
 import json
 import os
 import re
 import string
 import sys
+
+from bulstem.stem import BulStemmer
+from collections import Counter
 
 
 def read_file(filename):

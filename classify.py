@@ -3,14 +3,16 @@
 import json
 import pandas as pd
 import sys
-from sklearn.preprocessing import MultiLabelBinarizer
-from sklearn.model_selection import train_test_split
+
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-# Binary Relevance
-from sklearn.multiclass import OneVsRestClassifier
 # Performance metric
 from sklearn.metrics import f1_score
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+# Binary Relevance
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.preprocessing import MultiLabelBinarizer
+
 from extract import extract_words
 
 
